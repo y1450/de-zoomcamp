@@ -35,3 +35,18 @@ resource "aws_vpc" "prefect_vpc" {
     Name = "prefect_vpc"
   }
 }
+
+
+# ----------- Internet Gateway ------------------
+// Create an internet gateway named "prefect_igw"
+// and attach it to the "prefect_vpc" VPC
+resource "aws_internet_gateway" "prefect_igw" {
+  // Here we are attaching the IGW to the 
+  // prefect_vpc VPC
+  vpc_id = aws_vpc.prefect_vpc.id
+
+  // We are tagging the IGW with the name prefect_igw
+  tags = {
+    Name = "prefect_igw"
+  }
+}
